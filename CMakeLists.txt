@@ -1,5 +1,10 @@
 cmake_minimum_required(VERSION 3.5.1)
 project(libxaac C CXX)
+
+enable_language(CXX)
+find_package(cifuzz NO_SYSTEM_ENVIRONMENT_PATH)
+enable_fuzz_testing()
+
 enable_language(ASM)
 
 option(BUILD64 "Build for 64 bit" OFF)
@@ -27,3 +32,4 @@ include("${XAAC_ROOT}/encoder/libxaacenc.cmake")
 include("${XAAC_ROOT}/test/encoder/xaacenc.cmake")
 include("${XAAC_ROOT}/fuzzer/xaac_enc_fuzzer.cmake")
 
+add_subdirectory(cifuzz-spark)
